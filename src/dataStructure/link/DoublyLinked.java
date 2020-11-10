@@ -132,7 +132,7 @@ public class DoublyLinked {
             System.out.println();
         }
 
-        public void displayBackword() {
+        public void displayBackward() {
             System.out.println("Link (last -->first): ");
             Link current = last;
             while (current != null) {
@@ -155,7 +155,7 @@ public class DoublyLinked {
         theList.insertLast(55);
 
         theList.displayForward();
-        theList.displayBackword();
+        theList.displayBackward();
 
         theList.deleteFirst();
         theList.deleteLast();
