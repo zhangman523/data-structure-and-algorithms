@@ -1,4 +1,4 @@
-package sort.simple;
+package algorithms.sort.simple;
 
 /**
  * Java 冒泡排序
@@ -75,7 +75,7 @@ public class BubbleSort {
                         swap(in, in + 1);
                     }
                 }
-            }// end bubble sort
+            }// end bubble algorithms.sort
         }
 
         private void swap(int one, int two) {

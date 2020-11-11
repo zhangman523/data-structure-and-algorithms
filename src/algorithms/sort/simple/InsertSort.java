@@ -1,4 +1,4 @@
-package sort.simple;
+package algorithms.sort.simple;
 
 /**
  * Java 插入排序

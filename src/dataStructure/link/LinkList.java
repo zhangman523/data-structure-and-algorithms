@@ -44,7 +44,7 @@ public class LinkList {
 
     public Link delete(int key) { //delete link with given key
         if (isEmpty()) return null;
-        Link current = first;       //search for link
+        Link current = first;       //algorithms.search for link
         Link previous = first;
 
         while (current.iData != key) {

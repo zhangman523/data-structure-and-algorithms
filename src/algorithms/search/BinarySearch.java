@@ -1,6 +1,4 @@
-package search;
-
-import com.sun.tools.corba.se.idl.constExpr.Or;
+package algorithms.search;
 
 /**
  * java 递归实现的二分查找
@@ -45,7 +43,7 @@ public class BinarySearch {
         public void insert(long value) {
             int j;
             for (j = 0; j < nElems; j++) {  // find where is goes
-                if (a[j] > value) {         // linear search
+                if (a[j] > value) {         // linear algorithms.search
                     break;
                 }
             }
