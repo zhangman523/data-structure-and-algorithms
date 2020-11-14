@@ -1,5 +1,9 @@
 package algorithms.recursion;
 
+import java.io.IOException;
+
+import static dataStructure.link.InterIterator.getInt;
+
 /**
  * 消除递归
  * 有一些算法趋向于用递归的方法，另一些算法则不是。正如前面已经看到的那样，递归的triangle() 和factorial()方法
@@ -28,7 +32,7 @@ public class StackTriangle {
         }
     }
 
-    class StackX {
+    static class StackX {
         private int maxSize;
         private Params[] stackArray;
         private int top;
@@ -52,5 +56,67 @@ public class StackTriangle {
         }
     }
 
-    // TODO: 2020/11/12  待实现 
+    static int theNumber;
+    static int theAnswer;
+    static StackX theStack;
+    static int codePart;
+    static Params theseParams;
+
+    public static void main(String[] args) throws IOException {
+        System.out.print("Enter a number: ");
+        theNumber = getInt();
+
+        recTriangle();
+
+        System.out.println("Triangle= " + theAnswer);
+    }
+
+    /**
+     * 把递归程序转换成了使用栈的程序。这表明对于任意一个递归算法都可能作出这种转换，实际上这就是一个例子。
+     * 实践中，人们往往从一开始就重新思考基于栈的算法，而不是从递归算法转化，这个做更为实用。
+     *
+     */
+    public static void recTriangle() {
+        theStack = new StackX(10000);
+        codePart = 1;
+        while (!step()){  //call step() until it's tue
+        }
+    }
+
+    public static boolean step() {
+        switch (codePart) {
+            case 1:                 //initial call
+                theseParams = new Params(theNumber, 6);
+                theStack.push(theseParams);
+                codePart = 2;
+                break;
+            case 2:                 //method entry
+                theseParams = theStack.peek();
+                if (theseParams.n == 1) {
+                    theAnswer = 1;
+                    codePart = 5; //exit
+                } else {
+                    codePart = 3;
+                }
+                break;
+            case 3:
+                Params newParams = new Params(theseParams.n - 1, 4);
+                theStack.push(newParams);
+                codePart = 2; //go enter method
+                break;
+            case 4:           //calculation
+                theseParams = theStack.peek();
+                theAnswer = theAnswer + theseParams.n;
+                codePart = 5;
+                break;
+            case 5:
+                theseParams = theStack.peek();
+                codePart = theseParams.returnAddress;// 4 or 6
+                theStack.pop();
+                break;
+            case 6:
+                return true;
+        }
+        return false;
+    }
 }
